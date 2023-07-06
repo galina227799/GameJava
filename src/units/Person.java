@@ -17,8 +17,10 @@ public abstract class Person implements InGameInterface, Serializable {
 
     protected int numberTeam;
 
+    public int initiative;
 
-    public Person(float hp, String name, int[] damage,int attack,int def, int x, int y, int nT) {
+
+    public Person(float hp, String name, int[] damage,int attack,int def, int x, int y, int nT, int initiative) {
         this.hp = this.curHp=hp;
         this.name = name;
         this.damage = damage;
@@ -26,6 +28,7 @@ public abstract class Person implements InGameInterface, Serializable {
         this.def = def;
         this.coordinats = new Coordinats(x,y);
         this.numberTeam = nT;
+        this.initiative = initiative;
 
       }
 
@@ -49,15 +52,13 @@ public abstract class Person implements InGameInterface, Serializable {
         return k;
     }
 
-    @Override
-    public void step(ArrayList<Person> teamProtivnic) {
-        System.out.println("Шаг вперед");
-    }
+
 
     @Override
     public String getInfo(){
-        return getClass().getName()+" "+name+" "+coordinats;
+        return getClass().getName()+" "+name+" "+curHp;
     }
+
 
 
 }

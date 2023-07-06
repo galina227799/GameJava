@@ -1,6 +1,7 @@
 import units.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 public class Main {
@@ -9,13 +10,34 @@ public class Main {
 
         ArrayList<Person> team1 = newTeam(1,1);
         ArrayList<Person> team2 = newTeam(10,2);
-
+        ArrayList<Person> teamAll = new ArrayList<>();
+        teamAll.addAll(team1);
+        teamAll.addAll(team2);
+        teamAll.sort(new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.initiative- o2.initiative;
+            }
+        });
 
         printInfo(team1);
         printInfo(team2);
+        System.out.println("_".repeat(20));
 
-        team1.forEach(n->n.step(team2));
-        team2.forEach(n->n.step(team1));
+
+        for (Person p:teamAll) {
+
+            if(team1.contains(p)) {
+                p.step(team2,team1);
+            }
+            else {
+                p.step(team1,team2);
+            }
+
+        }
+
+        printInfo(team1);
+        printInfo(team2);
 
     }
     private static String getName() {
