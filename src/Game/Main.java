@@ -1,28 +1,35 @@
-import units.*;
+package Game;
+
+import Game.units.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
+    public static ArrayList<Person> team1;
+    public static ArrayList<Person> team2;
+    public static ArrayList<Person> teamAll;
     public static void main(String[] args) {
 
-        ArrayList<Person> team1 = newTeam(1,1);
-        ArrayList<Person> team2 = newTeam(10,2);
-        ArrayList<Person> teamAll = new ArrayList<>();
+
+        team1 = newTeam(1,1);
+        team2 = newTeam(10,2);
+        teamAll = new ArrayList<Person>(20);
         teamAll.addAll(team1);
         teamAll.addAll(team2);
-        teamAll.sort(new Comparator<Person>() {
-            @Override
-            public int compare(Person o1, Person o2) {
-                return o1.initiative- o2.initiative;
-            }
-        });
+//        teamAll.sort(new Comparator<Person>() {
+//            @Override
+//            public int compare(Person o1, Person o2) {
+//                return o1.initiative- o2.initiative;
+//            }
+//        });
 
-        printInfo(team1);
-        printInfo(team2);
-        System.out.println("_".repeat(20));
+//        printInfo(team1);
+//        printInfo(team2);
+//        System.out.println("_".repeat(20));
 
 
         for (Person p:teamAll) {
@@ -36,8 +43,10 @@ public class Main {
 
         }
 
-        printInfo(team1);
-        printInfo(team2);
+//        printInfo(team1);
+//        printInfo(team2);
+        Scanner in = new Scanner(System.in);
+        View.view();
 
     }
     private static String getName() {
@@ -62,6 +71,15 @@ public class Main {
                 case 3:
                     team.add(new Sniper(getName(),k,i,nT));
                     break;
+                case 4:
+                    team.add(new Wizard(getName(),k,i,nT));
+                    break;
+                case 5:
+                    team.add(new Bandit(getName(),k,i,nT));
+                    break;
+                case 6:
+                    team.add(new Spearman(getName(),k,i,nT));
+                    break;
                 default:
                     team.add(new Archer(getName(),k,i,nT));
                     break;
@@ -75,7 +93,7 @@ public class Main {
 //            System.out.println(team.get(i).myNameIs());
             System.out.println(team.get(i).getInfo());
         }
-        System.out.println("=============================================");
+        System.out.println("=".repeat(20));
     }
 
 }

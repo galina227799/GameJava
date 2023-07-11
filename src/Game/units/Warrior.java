@@ -1,6 +1,4 @@
-package units;
-
-import java.util.ArrayList;
+package Game.units;
 
 public abstract class Warrior extends Person{
 

@@ -1,4 +1,4 @@
-package units;
+package Game.units;
 
 public class Sniper extends Shooter{
 

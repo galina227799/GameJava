@@ -1,7 +1,8 @@
-package units;
+package Game.units;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class Person implements InGameInterface, Serializable {
 
@@ -19,6 +20,8 @@ public abstract class Person implements InGameInterface, Serializable {
 
     public int initiative;
 
+    protected String status;
+
 
     public Person(float hp, String name, int[] damage,int attack,int def, int x, int y, int nT, int initiative) {
         this.hp = this.curHp=hp;
@@ -29,6 +32,7 @@ public abstract class Person implements InGameInterface, Serializable {
         this.coordinats = new Coordinats(x,y);
         this.numberTeam = nT;
         this.initiative = initiative;
+        this.status = "Stand";
 
       }
 
@@ -48,7 +52,7 @@ public abstract class Person implements InGameInterface, Serializable {
             }
         }
 
-        System.out.println(getClass().getName()+" "+name+"- "+teamProtivnic.get(k).name+" "+minR);
+//        System.out.println(getClass().getName()+" "+name+"- "+teamProtivnic.get(k).name+" "+minR);
         return k;
     }
 
@@ -56,7 +60,31 @@ public abstract class Person implements InGameInterface, Serializable {
 
     @Override
     public String getInfo(){
-        return getClass().getName()+" "+name+" "+curHp;
+        return String.format(" %s %s \u2661: %s \u2694: %s In: %s",this.getClass().getSimpleName(),this.name,
+                this.curHp, Arrays.toString(this.damage), this.initiative);
+    }
+
+    protected void getDamage(float damage){
+        curHp -= damage;
+        if(curHp <= 0){
+            status = "die";
+            curHp = 0;
+        }
+
+        if(curHp>hp) {
+             curHp = hp;
+        }
+    }
+
+    public int[] getCoords(){
+        int[] coord = new int[2];
+        coord[0] = coordinats.x;
+        coord[1] = coordinats.y;
+
+        return coord;
+    }
+    public float getHp(){
+        return curHp;
     }
 
 

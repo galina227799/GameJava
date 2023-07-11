@@ -1,7 +1,4 @@
-package units;
-
-import java.sql.Array;
-import java.util.List;
+package Game.units;
 
 public  class Coordinats {
     int x;

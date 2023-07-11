@@ -1,4 +1,4 @@
-package units;
+package Game.units;
 
 public class Archer extends Shooter{
     public Archer(String name, int x, int y, int nT) {
