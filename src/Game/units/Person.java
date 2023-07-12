@@ -60,31 +60,31 @@ public abstract class Person implements InGameInterface, Serializable {
 
     @Override
     public String getInfo(){
-        return String.format(" %s %s \u2661: %s \u2694: %s In: %s",this.getClass().getSimpleName(),this.name,
-                this.curHp, Arrays.toString(this.damage), this.initiative);
+        return String.format(" %s %s %s \u2764: %s \u2661: %s \u2694: %s In: %s",this.getClass().getSimpleName(),this.name,
+                this.status, this.hp, this.curHp, Arrays.toString(this.damage), this.initiative);
     }
 
     protected void getDamage(float damage){
-        curHp -= damage;
-        if(curHp <= 0){
-            status = "die";
-            curHp = 0;
+        this.curHp -= damage;
+        if(this.curHp <= 0){
+            this.status = "die";
+            this.curHp = 0;
         }
 
-        if(curHp>hp) {
-             curHp = hp;
+        if(this.curHp>this.hp) {
+            this.curHp = this.hp;
         }
     }
 
     public int[] getCoords(){
         int[] coord = new int[2];
-        coord[0] = coordinats.x;
-        coord[1] = coordinats.y;
+        coord[0] = this.coordinats.x;
+        coord[1] = this.coordinats.y;
 
         return coord;
     }
     public float getHp(){
-        return curHp;
+        return this.curHp;
     }
 
 

@@ -21,7 +21,7 @@ public abstract class Shooter extends Person {
 
 
         for (int i = 0; i < team.size(); i++){
-            if (team.get(i).getClass().equals("Farmer") && team.get(i).status.equals("stand")) {
+            if (team.get(i).getClass().getSimpleName().equals("Farmer") && team.get(i).status.equals("Stand")) {
                 team.get(i).status = "busy";
                 return;
             }

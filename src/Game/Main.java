@@ -20,12 +20,12 @@ public class Main {
         teamAll = new ArrayList<Person>(20);
         teamAll.addAll(team1);
         teamAll.addAll(team2);
-//        teamAll.sort(new Comparator<Person>() {
-//            @Override
-//            public int compare(Person o1, Person o2) {
-//                return o1.initiative- o2.initiative;
-//            }
-//        });
+        teamAll.sort(new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.initiative- o2.initiative;
+            }
+        });
 
 //        printInfo(team1);
 //        printInfo(team2);
