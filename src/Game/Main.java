@@ -30,23 +30,25 @@ public class Main {
 //        printInfo(team1);
 //        printInfo(team2);
 //        System.out.println("_".repeat(20));
+        Scanner in = new Scanner(System.in);
 
+        while(true) {
+            for (Person p : teamAll) {
 
-        for (Person p:teamAll) {
+                if (team1.contains(p)) {
+                    p.step(team2, team1);
+                } else {
+                    p.step(team1, team2);
+                }
 
-            if(team1.contains(p)) {
-                p.step(team2,team1);
             }
-            else {
-                p.step(team1,team2);
-            }
+
+            View.view();
+            in.nextLine();
 
         }
-
 //        printInfo(team1);
 //        printInfo(team2);
-        Scanner in = new Scanner(System.in);
-        View.view();
 
     }
     private static String getName() {
@@ -78,7 +80,7 @@ public class Main {
                     team.add(new Bandit(getName(),k,i,nT));
                     break;
                 case 6:
-                    team.add(new Spearman(getName(),k,i,nT));
+                    team.add(new Pikeman(getName(),k,i,nT));
                     break;
                 default:
                     team.add(new Archer(getName(),k,i,nT));

@@ -39,14 +39,12 @@ public abstract class Person implements InGameInterface, Serializable {
     public int findNearest(ArrayList<Person> teamProtivnic){
 //        teamProtivnic.forEach(n->);
 
-        double minR = Coordinats.Rastoynie(coordinats.x, teamProtivnic.get(0).coordinats.x,coordinats.y,
-                teamProtivnic.get(0).coordinats.y);
+        double minR = coordinats.rastoynie(teamProtivnic.get(0).coordinats);
         int k = 0;
 
-        for (int i = 1; i < 10; i++) {
-            double R = Coordinats.Rastoynie(coordinats.x, teamProtivnic.get(i).coordinats.x,coordinats.y,
-                    teamProtivnic.get(i).coordinats.y);
-            if(R<minR) {
+        for (int i = 0; i < 10; i++) {
+            double R = coordinats.rastoynie(teamProtivnic.get(i).coordinats);
+            if(R<minR && !daad()) {
                 minR = R;
                 k = i;
             }
@@ -67,7 +65,7 @@ public abstract class Person implements InGameInterface, Serializable {
     protected void getDamage(float damage){
         this.curHp -= damage;
         if(this.curHp <= 0){
-            this.status = "die";
+            this.status = "dead";
             this.curHp = 0;
         }
 
@@ -85,6 +83,10 @@ public abstract class Person implements InGameInterface, Serializable {
     }
     public float getHp(){
         return this.curHp;
+    }
+
+    public boolean daad(){
+        return this.status.equals("dead");
     }
 
 
