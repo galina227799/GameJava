@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Wizard extends magic{
     public Wizard(String name, int x, int y, int nT) {
-        super(10, name, new int[]{-3,-3},2,1, x, y, nT, 2);
+        super(10, name, new int[]{-3,-3},2,1, x, y, nT, 2,2);
     }
 
     @Override
